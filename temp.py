@@ -1,13 +1,26 @@
 import numpy as np
-import pylab as pl
-#Crea un vector (arreglo) con los valores del eje X
-x=[1997,1998,1999,2000,2001,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017]
-#Crea un vector (arreglo) con valores en el eje Y para cada valor en el eje X
-y=[0,1,1,1,3,3,3,3,4,4,4,4,4,4,4,4,4,5,5,5,5,5]
-#Grafica del vector x contra el vector y
-pl.plot(x,y, 'pm')
-pl.ylabel('Numero de novios y mascotas')
-pl.xlabel('Anios')
-pl.title('Numero de novios y mascotas por anios de vida')
-#Guarda la grafica
-pl.savefig('temp1.png')
+import matplotlib.pyplot as plt 
+
+def f(t):
+    return np.exp(-t) * np.cos(2*np.pi*t)
+#Definimos el rango de dos variables y el intervalo en el que cambian
+t1 = np.arange(0.0,5.0,0.1)
+t2 = np.arange(0.0,5.0,0.02)
+
+#Crean el grupo de graficas
+plt.figure(1)
+#Crea el lienzo con dos renglones, una columna y entra a la primera seccion de esta division
+plt.subplot(211)
+#Grafica la variable t1 contra la funcion f(t1) con circulos azules y grafica la variable t2 contra la funcion f(t2) con una linea negra
+plt.plot(t1, f(t1), 'bo', t2, f(t2), 'k')
+
+#Entra a la segunda seccion del lienzo dividido
+plt.subplot(212)
+#grafica la variable t2 contra la funcion cos(2pi*x) con una linea punteada roja
+plt.plot(t2, np.cos(2*np.pi*t2), 'r--')
+#guarda la grafica
+plt.savefig('Dos funciones.png')
+#muestra la grafica
+plt.show()
+
+
